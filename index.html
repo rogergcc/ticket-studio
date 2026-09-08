@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abriendo Ticket Studio...</title>
+    <script>
+        window.onload = function() {
+            // Captura todos los parámetros (?fan=...&zone=...&folio=...) de la URL web
+            const currentParams = window.location.search;
+            
+            // Redirige automáticamente al esquema de tu app Android
+            const deepLink = "ticketstudio://create" + currentParams;
+            
+            // Intenta abrir la app
+            window.location.href = deepLink;
+        };
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #FFEA00;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h2>🎟️ Abriendo Ticket Studio...</h2>
+    <p>Si la aplicación no se abre automáticamente, haz clic abajo:</p>
+    <a id="fallback-btn" class="btn" href="#">Abrir en App</a>
+
+    <script>
+        // Configura el botón por si el navegador bloquea el auto-redirect
+        document.getElementById('fallback-btn').href = "ticketstudio://create" + window.location.search;
+    </script>
+</body>
+</html>
